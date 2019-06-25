@@ -17,11 +17,8 @@ class App extends Component {
   }
   
   componentDidMount(){
-    fetch('http://assets.breatheco.de/apis/sound/fx')
-      .then(function(response){
-        if(!response.ok){
-          throw Error(response.statusText);
-        }
+    fetch('https://assets.breatheco.de/apis/sound/songs')
+      .then((response) => {
         return response.json();
       })
       .then((responseAsJson) =>{
@@ -29,7 +26,7 @@ class App extends Component {
         console.log(canciones);
         this.setState({lista: canciones});
       })
-      .catch(function(error) {
+      .catch((error) => {
         alert(error);
       });
   }
