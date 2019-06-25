@@ -1,33 +1,25 @@
-.App {
+.lista{
+  list-style: none;
+  padding-left: 10px;
+}
+.cancion{
+  border-bottom: 1px solid #2a2a2b;
+  height: 40px;
+}
+.contenedorLista{
+  margin-bottom: 50px;
+}
+.cancion:hover{
+  background-color: #2a2a2b;
+}
+.barraControles{
+  background-color: #2a2a2b;
+  height: 50px;
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.boton{
+  font-size: 35px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.seleccionada{
+  background-color: #525252;
 }
