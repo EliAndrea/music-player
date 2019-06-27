@@ -1,25 +1,25 @@
-.lista{
+.list{
   list-style: none;
   padding-left: 10px;
 }
-.cancion{
+.song{
   border-bottom: 1px solid #2a2a2b;
   height: 40px;
 }
-.contenedorLista{
+.listContainer{
   margin-bottom: 50px;
 }
-.cancion:hover{
+.song:hover{
   background-color: #2a2a2b;
 }
-.barraControles{
+.controls{
   background-color: #2a2a2b;
   height: 50px;
   text-align: center;
 }
-.boton{
+.button{
   font-size: 35px;
 }
-.seleccionada{
+.selected{
   background-color: #525252;
 }
