@@ -16,6 +16,7 @@ export class MusicList extends Component{
         this.unselectSong(songsList);
         songsList[index].selected = "selected";
         this.props.update(songsList);
+        this.props.play(songsList[index]);
     }
 
     render(){
