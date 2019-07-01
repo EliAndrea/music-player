@@ -35,28 +35,30 @@ class App extends Component {
   }
 
   playSelectedSong(song){
-    this.setState({ song: song, iconBtn: "pause-circle" }, () => {
-      this.playSong();
-    });
-    
-  }
-  playSong = () => {
-    this.audioRef.current.play();
-  }
-  pauseSong = () => {
-    this.audioRef.current.pause();
+    this.setState({ 
+      song: song, 
+      iconBtn: "pause-circle" 
+    }, () => {
+      this.audioRef.current.play();
+    }); 
   }
 
   forwardSong(arr){
     for(let i=0; i<arr.length; i++){
       if(arr[i].selected === "selected" && i < arr.length - 1){
         arr[i].selected = "";
-        arr[i +1].selected = "selected";
+        arr[i+1].selected = "selected";
+        this.setState({song: arr[i+1]}, ()=>{
+          this.audioRef.current.play();
+        })
         break;
       }
       else if(arr[i].selected === "selected" && i === arr.length-1){
         arr[i].selected = "";
         arr[0].selected = "selected";
+        this.setState({song: arr[0]}, ()=>{
+          this.audioRef.current.play();
+        })
         break;
       }
     }
@@ -66,12 +68,18 @@ class App extends Component {
     for(let i=arr.length-1; i >= 0; i--){
       if(arr[i].selected === "selected" && i > 0){
         arr[i].selected = "";
-        arr[i - 1].selected = "selected";
+        arr[i-1].selected = "selected";
+        this.setState({song: arr[i-1]}, ()=>{
+          this.audioRef.current.play();
+        })
         break;
       }
       else if(arr[i].selected === "selected" && i === 0){
         arr[i].selected = "";
         arr[arr.length-1].selected = "selected";
+        this.setState({song: arr[arr.length-1]}, ()=>{
+          this.audioRef.current.play();
+        })
         break;
       }
     }
@@ -80,11 +88,11 @@ class App extends Component {
   clickbtnPlay(){
     if(this.state.iconBtn === "play"){
       this.setState({iconBtn: "pause-circle"}) 
-      this.playSong();
+      this.audioRef.current.play();
    }
    else{
       this.setState({iconBtn: "play"})
-      this.pauseSong()
+      this.audioRef.current.pause();
    }
   }
   
@@ -94,11 +102,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <audio ref={this.audioRef} src={this.state.song.url} controls>
-        </audio>
+        <audio ref={this.audioRef} src={this.state.song.url}></audio>
         <MusicList songs={this.state.list} update={this.updateList} play={this.playSelectedSong}/>
         <Controls forward={this.forwardSong} backward={this.backwardSong} 
-          list={this.state.list} btnPlay={this.state.iconBtn} play={this.clickbtnPlay} pause={this.pauseSong}/>
+          list={this.state.list} btnPlay={this.state.iconBtn} play={this.clickbtnPlay}/>
       </div>
     );
   }
